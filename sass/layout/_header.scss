@@ -1,0 +1,57 @@
+@use "../abstracts/abstracts" as abs;
+
+.header-container {
+  margin-top: 37px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 134px;
+  .navbar ul {
+    display: flex;
+    gap: 48px;
+    li {
+      list-style: none;
+    }
+    a {
+      text-decoration: none;
+      color: abs.$gray;
+      transition: color 0.2s ease;
+      position: relative;
+      &.active {
+        color: white;
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          background-color: abs.$pink;
+          height: 3px;
+          width: 60%;
+          bottom: -7px;
+          left: 0;
+          border-radius: 6px;
+        }
+      }
+      &:hover {
+        color: white;
+        &::before {
+          content: "";
+          position: absolute;
+          background-color: abs.$pink;
+          height: 3px;
+          width: 60%;
+          bottom: -7px;
+          left: 0;
+          border-radius: 6px;
+        }
+      }
+    }
+    &:has(a:hover) {
+      a.active:not(:hover) {
+        color: gray;
+        &::before {
+          content: "";
+          height: 0;
+        }
+      }
+    }
+  }
+}
